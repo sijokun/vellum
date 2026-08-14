@@ -1,0 +1,77 @@
+subpackages='
+pitwall-oxide:pitwall_oxide
+'
+maintainer="Yan Khachko <46069139+sijokun@users.noreply.github.com>"
+pkgname=pitwall
+pkgver=1.0.0
+pkgrel=0
+upstream_author="sijokun"
+category="apps"
+pkgdesc="Live Formula 1 timing for AppLoad: positions, intervals, tyres, flags, and race control"
+url="https://github.com/$upstream_author/PitWall"
+arch="aarch64 armv7"
+license="MIT"
+depends="launcher"
+_commit="5711ccbe83e06691e93277cc47c3ee13f993de48"
+readmeurl="https://raw.githubusercontent.com/$upstream_author/PitWall/$_commit/README.md"
+
+source="
+$pkgname-$pkgver.tar.gz::https://github.com/$upstream_author/PitWall/archive/$_commit.tar.gz
+pitwall.oxide
+"
+builddir="$srcdir/PitWall-$_commit"
+
+image="ghcr.io/toltec-dev/golang:v4.0"
+
+build() {
+	cd "$builddir"
+
+	case "$CARCH" in
+		aarch64) export GOARCH=arm64 ;;
+		armv7) export GOARCH=arm GOARM=7 ;;
+	esac
+
+	GOOS=linux CGO_ENABLED=0 go build \
+		-trimpath -ldflags="-s -w" -o build/pitwall ./cmd/pitwall
+}
+
+package() {
+	install -Dm755 build/pitwall \
+		"$pkgdir"/home/root/xovi/exthome/appload/$pkgname/pitwall
+	install -Dm644 external.manifest.json \
+		"$pkgdir"/home/root/xovi/exthome/appload/$pkgname/external.manifest.json
+	install -Dm644 icon.png \
+		"$pkgdir"/home/root/xovi/exthome/appload/$pkgname/icon.png
+
+	install -Dm644 LICENSE \
+		"$pkgdir"/home/root/.vellum/licenses/$pkgname/LICENSE
+	echo "https://github.com/sijokun/PitWall/archive/e8828b59c3eb7557d40ffdce726cef4d4fee0cdd.tar.gz" > \
+		"$pkgdir"/home/root/.vellum/licenses/$pkgname/SOURCES
+}
+
+pitwall_oxide() {
+	pkgdesc="Oxide application registration for PitWall"
+	depends="qtfblight"
+	install_if="$pkgname=$pkgver-r$pkgrel oxide"
+
+	package() {
+		install -Dm644 "$srcdir"/pitwall.oxide \
+			"$subpkgdir/home/root/.local/share/applications/Pit Wall.oxide"
+
+		install -Dm644 "$builddir"/LICENSE \
+			"$subpkgdir"/home/root/.vellum/licenses/$subpkgname/LICENSE
+		echo "https://github.com/sijokun/PitWall/archive/$_commit.tar.gz" > \
+			"$subpkgdir"/home/root/.vellum/licenses/$subpkgname/SOURCES
+	}
+}
+
+postdeinstall() {
+	if [ "$VELLUM_PURGE" = "1" ]; then
+		rm -rf /home/root/.config/pitwall
+	fi
+}
+
+sha512sums='7fb647bffe516fd62ba0e6af1aa97e25d9b9c85fc0784611efadbd01e41b6ff00a295632444860fd670dc1157428237e915f3cead4904019db716c2f3df49439
+pitwall-1.0.0.tar.gz
+1dc3014f9063cb557ab66bcd7806e00142f4e36f44ad52e2bbbdf0558aaf78e628318c459853bbd5b4e666a520742dd9461418764010a5fd7da821df4e21cc02
+pitwall.oxide'
