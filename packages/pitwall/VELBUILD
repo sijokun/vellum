@@ -1,7 +1,7 @@
 subpackages='
 pitwall-oxide:pitwall_oxide
 '
-maintainer="Yan Khachko <46069139+sijokun@users.noreply.github.com>"
+maintainer="Yan Khachko <a@slnk.icu>"
 pkgname=pitwall
 pkgver=1.0.1
 pkgrel=0
@@ -72,6 +72,6 @@ postdeinstall() {
 }
 
 sha512sums='855159296df709430db4ee290d416a9eda271797a6d95af93ce71241b39e413bd5256d86074755e8dcb581cc7a0e8c5c93701da0f1283120a8b390f2be613356
-pitwall-1.0.0.tar.gz
+pitwall-1.0.1.tar.gz
 1dc3014f9063cb557ab66bcd7806e00142f4e36f44ad52e2bbbdf0558aaf78e628318c459853bbd5b4e666a520742dd9461418764010a5fd7da821df4e21cc02
 pitwall.oxide'
