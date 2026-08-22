@@ -1,9 +1,9 @@
 subpackages='
 pitwall-oxide:pitwall_oxide
 '
-maintainer="Yan Khachko <46069139+sijokun@users.noreply.github.com>"
+maintainer="Yan Khachko <a@slnk.icu>"
 pkgname=pitwall
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=0
 upstream_author="sijokun"
 category="apps"
@@ -12,7 +12,7 @@ url="https://github.com/$upstream_author/PitWall"
 arch="aarch64 armv7"
 license="MIT"
 depends="launcher"
-_commit="5711ccbe83e06691e93277cc47c3ee13f993de48"
+_commit="aefee2e93c4b7f9e0f865adfc5f78e06f392b959"
 readmeurl="https://raw.githubusercontent.com/$upstream_author/PitWall/$_commit/README.md"
 
 source="
@@ -45,7 +45,7 @@ package() {
 
 	install -Dm644 LICENSE \
 		"$pkgdir"/home/root/.vellum/licenses/$pkgname/LICENSE
-	echo "https://github.com/sijokun/PitWall/archive/e8828b59c3eb7557d40ffdce726cef4d4fee0cdd.tar.gz" > \
+	echo "https://github.com/sijokun/PitWall/archive/$_commit.tar.gz" > \
 		"$pkgdir"/home/root/.vellum/licenses/$pkgname/SOURCES
 }
 
@@ -71,7 +71,7 @@ postdeinstall() {
 	fi
 }
 
-sha512sums='7fb647bffe516fd62ba0e6af1aa97e25d9b9c85fc0784611efadbd01e41b6ff00a295632444860fd670dc1157428237e915f3cead4904019db716c2f3df49439
-pitwall-1.0.0.tar.gz
+sha512sums='855159296df709430db4ee290d416a9eda271797a6d95af93ce71241b39e413bd5256d86074755e8dcb581cc7a0e8c5c93701da0f1283120a8b390f2be613356
+pitwall-1.0.1.tar.gz
 1dc3014f9063cb557ab66bcd7806e00142f4e36f44ad52e2bbbdf0558aaf78e628318c459853bbd5b4e666a520742dd9461418764010a5fd7da821df4e21cc02
 pitwall.oxide'
