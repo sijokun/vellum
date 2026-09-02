@@ -3,7 +3,7 @@ pitwall-oxide:pitwall_oxide
 '
 maintainer="Yan Khachko <a@slnk.icu>"
 pkgname=pitwall
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=0
 upstream_author="sijokun"
 category="apps"
@@ -12,7 +12,7 @@ url="https://github.com/$upstream_author/PitWall"
 arch="aarch64 armv7"
 license="MIT"
 depends="launcher"
-_commit="aefee2e93c4b7f9e0f865adfc5f78e06f392b959"
+_commit="f8c1b42dbf42f9e59dbc41fd914d35ce84bd2392"
 readmeurl="https://raw.githubusercontent.com/$upstream_author/PitWall/$_commit/README.md"
 
 source="
@@ -71,7 +71,7 @@ postdeinstall() {
 	fi
 }
 
-sha512sums='855159296df709430db4ee290d416a9eda271797a6d95af93ce71241b39e413bd5256d86074755e8dcb581cc7a0e8c5c93701da0f1283120a8b390f2be613356
-pitwall-1.0.1.tar.gz
+sha512sums='8fd7724064b7c11f5e1fc89685326628ee590f1e194a7ad5ff5626687d7b24a389d4318976e0de05ceff9f0e20a568810e4da85573ea677a47b11f83b9450cde
+pitwall-1.1.0.tar.gz
 1dc3014f9063cb557ab66bcd7806e00142f4e36f44ad52e2bbbdf0558aaf78e628318c459853bbd5b4e666a520742dd9461418764010a5fd7da821df4e21cc02
 pitwall.oxide'
